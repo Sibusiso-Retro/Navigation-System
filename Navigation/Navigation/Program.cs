@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NavigationSystem
+namespace Navigation
 {
     class Program
     {
@@ -17,6 +17,9 @@ namespace NavigationSystem
                 Console.ReadKey();
                 return;
             }
+            //create Navigation Command Object,this stage all user input parameters are valid
+            Command navigationCommand = new Command(navInstructions);
+
             Console.WriteLine("User input valid");
             Console.ReadKey();
         }

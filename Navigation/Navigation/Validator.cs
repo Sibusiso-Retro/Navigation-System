@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NavigationSystem
+namespace Navigation
 {
     public static class Validator
     {

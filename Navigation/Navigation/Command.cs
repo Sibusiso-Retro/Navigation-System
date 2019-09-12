@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5
+namespace Navigation
 {
     public class Command
     {
@@ -14,14 +14,14 @@ namespace ConsoleApp5
         {
             string[] parameters = input.Split(' ');
             ZoneX = Int32.Parse(parameters[0]);
-            ZoneY = Int32.Parse(parameters[0]);
-            RoverX = Int32.Parse(parameters[0]);
-            RoverY = Int32.Parse(parameters[0]);
-            RoverD = char.Parse(parameters[0]);
+            ZoneY = Int32.Parse(parameters[1]);
+            RoverX = Int32.Parse(parameters[2]);
+            RoverY = Int32.Parse(parameters[3]);
+            RoverD = char.Parse(parameters[4]);
             Moves = new List<char>(0);
-            for (int i = 0; i < parameters[0].Length; i++)//add each char of the string into Moves List
+            for (int i = 0; i < parameters[5].Length; i++)//add each char of the string into Moves List
             {
-                Moves.Add(parameters[0][i]);
+                Moves.Add(parameters[5][i]);
             }
         }
         public Command(int zoneX, int zoneY, int roverX, int roverY, char roverD, List<char> moves)
