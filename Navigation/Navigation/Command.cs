@@ -41,7 +41,10 @@ namespace Navigation
         public int RoverY { get; set; }
         public char RoverD { get; set; }
         public List<char> Moves { get; set; }
-        
+        public string GetRoverCoordinates()
+        {
+            return RoverX + " " + RoverY + " " + RoverD;
+        }
         //operations
         public string ExecuteNavigationMovements()
         {
@@ -131,7 +134,7 @@ namespace Navigation
         }
         private bool isDirection(char m)//check if current character is move(M) or Direction(R or L)
         {
-            if(m == 'N' || m == 'E' || m == 'S' || m == 'W')
+            if(m == 'R' || m == 'L')
             {
                 return true;
             }

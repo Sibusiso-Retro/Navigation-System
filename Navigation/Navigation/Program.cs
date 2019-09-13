@@ -17,12 +17,24 @@ namespace Navigation
                 Console.ReadKey();
                 return;
             }
+
             //create Navigation Command Object,this stage all user input parameters are valid
             Command navigationCommand = new Command(navInstructions);
 
+            //Navigate Rover to new Coordinate
+            status = navigationCommand.ExecuteNavigationMovements();
+            string output = navigationCommand.GetRoverCoordinates();
+            if (!status.Equals("pass"))//if not all the Movement commands were executed diplay updated rover coordinates and a failed status 
+            {
+                output += '\n' + status;
+            }
+            else
+            {
+                output += "\n Rover Navigation successful";
+            }
             
-
-            Console.WriteLine("User input valid");
+            //display results on console
+            Console.WriteLine(output);
             Console.ReadKey();
         }
     }
