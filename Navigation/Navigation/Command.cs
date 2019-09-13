@@ -54,16 +54,38 @@ namespace Navigation
                 }
                 else
                 {
-
+                    output = updateRoverCoordinate(Moves.ElementAt(i));
+                    if (!output.Equals("pass"))//if movement did not pass then termination, else continue executing movements
+                    {
+                        return output;
+                    }
                 }
             }
-            return "Rover moved successfully";//all movements executed successfully
+            return "pass";//all movements executed successfully
         }
         public string updateRoverCoordinate(char m)
         {
-            string output = "";
+            if(RoverD == 'N' && RoverY < ZoneY)
+            {
+                RoverY++;
+            }else if (RoverD == 'E' && RoverX < ZoneX)
+            {
+                RoverX++;
+            }
+            else if (RoverD == 'S' && RoverY >= 1)
+            {
+                RoverY--;
+            }
+            else if (RoverD == 'W' && RoverX >= 1)
+            {
+                RoverX--;
+            }
+            else
+            {
+                return "Rover cannot move outside safe zone";
+            }
 
-            return output;
+            return "pass";
         }
         public char updateRoverDirection(char m)
         {

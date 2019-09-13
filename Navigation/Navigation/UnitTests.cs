@@ -131,13 +131,15 @@ namespace Navigation
         [TestFixture]
         class MovementTestCae
         {
+
+            //Rover direction update tests
             [TestCase]
             public void ChangeDirectionTest1()
             {
 
                 List<char> ls = new List<char>();
                 Command cmd = new Command(1, 1, 1, 1, 'N', ls);
-                Assert.AreEqual('W',cmd.updateRoverDirection('L') );
+                Assert.AreEqual('W', cmd.updateRoverDirection('L'));
             }
             [TestCase]
             public void ChangeDirectionTest2()
@@ -154,6 +156,29 @@ namespace Navigation
                 cmd.updateRoverDirection('R');
                 cmd.updateRoverDirection('R');
                 Assert.AreEqual('E', cmd.updateRoverDirection('R'));
+            }
+
+            //Rover coordinate update tests
+            [TestCase]
+            public void ChangeCoordinateTest1()
+            {
+                List<char> ls = new List<char>();
+                Command cmd = new Command(1, 1, 1, 1, 'N', ls);
+                Assert.AreNotEqual("pass", cmd.updateRoverCoordinate('M'));
+            }
+            [TestCase]
+            public void ChangeCoordinateTest2()
+            {
+                List<char> ls = new List<char>();
+                Command cmd = new Command(2, 8, 2, 1, 'E', ls);
+                Assert.AreEqual("Rover cannot move outside safe zone", cmd.updateRoverCoordinate('M'));
+            }
+            [TestCase]
+            public void ChangeCoordinateTest3()
+            {
+                List<char> ls = new List<char>();
+                Command cmd = new Command(8, 8, 3, 3, 'E', ls);
+                Assert.AreEqual("pass", cmd.updateRoverCoordinate('M'));
             }
         }
     }
