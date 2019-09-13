@@ -41,5 +41,79 @@ namespace Navigation
         public int RoverY { get; set; }
         public char RoverD { get; set; }
         public List<char> Moves { get; set; }
+        
+        //operations
+        public string ExecuteNavigationMovements()
+        {
+            string output = "";
+            for(int i = 0; i < Moves.Count; i++)//execute all rover moves
+            {
+                if (isDirection(Moves.ElementAt(i)))
+                {
+                    updateRoverDirection(Moves.ElementAt(i));//update rover's direction
+                }
+                else
+                {
+
+                }
+            }
+            return "Rover moved successfully";//all movements executed successfully
+        }
+        public string updateRoverCoordinate(char m)
+        {
+            string output = "";
+
+            return output;
+        }
+        public char updateRoverDirection(char m)
+        {
+            //N =1(also 5), E = 2. S = 3, W = 4(also 0)
+            //R -> +
+            //L => -
+            int currentD = DirectionToNumber(RoverD);
+            if(m == 'R')//Add
+            {
+                currentD++; //might go to 5
+            }
+            else//subtract
+            {
+                currentD--; //might go to 0
+            }
+            //convert back from Number to character(direction)
+            if (currentD == 1 || currentD == 5) RoverD = 'N';
+            if (currentD == 2) RoverD = 'E'; 
+            if (currentD == 3) RoverD = 'S';
+            if (currentD == 4 || currentD == 0) RoverD = 'W';
+            return RoverD;
+
+        }
+        private int DirectionToNumber(char c)
+        {
+            int num = 0;
+            switch (c)
+            {
+                case 'N':
+                    num = 1;
+                    break;
+                case 'E':
+                    num = 2;
+                    break;
+                case 'S':
+                    num = 3;
+                    break;
+                default:
+                    num = 4;
+                    break;
+            }
+            return num;
+        }
+        private bool isDirection(char m)//check if current character is move(M) or Direction(R or L)
+        {
+            if(m == 'N' || m == 'E' || m == 'S' || m == 'W')
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

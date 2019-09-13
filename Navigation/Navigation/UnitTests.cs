@@ -126,9 +126,35 @@ namespace Navigation
             }
 
         }
+
+        //Navigation movements
         [TestFixture]
-        class InputToMainIntergration
+        class MovementTestCae
         {
+            [TestCase]
+            public void ChangeDirectionTest1()
+            {
+
+                List<char> ls = new List<char>();
+                Command cmd = new Command(1, 1, 1, 1, 'N', ls);
+                Assert.AreEqual('W',cmd.updateRoverDirection('L') );
+            }
+            [TestCase]
+            public void ChangeDirectionTest2()
+            {
+                List<char> ls = new List<char>();
+                Command cmd = new Command(1, 1, 1, 1, 'N', ls);
+                Assert.AreEqual('E', cmd.updateRoverDirection('R'));
+            }
+            [TestCase]
+            public void ChangeDirectionTest3()
+            {
+                List<char> ls = new List<char>();
+                Command cmd = new Command(1, 1, 1, 1, 'S', ls);
+                cmd.updateRoverDirection('R');
+                cmd.updateRoverDirection('R');
+                Assert.AreEqual('E', cmd.updateRoverDirection('R'));
+            }
         }
     }
 }
